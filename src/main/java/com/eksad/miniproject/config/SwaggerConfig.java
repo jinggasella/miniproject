@@ -35,7 +35,7 @@ public class SwaggerConfig {
 				.apiInfo(metaInfo())
 				.tags(
 					new Tag("EnterpriseOrgStructure", "ES Management API"),
-					new Tag("Person", "PersonManagement API"),
+					new Tag("Person", "Person Management API"),
 					new Tag("Data Manipulation API", ""),
 					new Tag("Get Data API", "")
 						)

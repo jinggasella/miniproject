@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,6 +41,20 @@ public class EnterpriseOrgStructureController {
 			)
 	public List<EnterpriseOrgStructure> getAllEnterpriseOrgStructures() {
 		return enterpriseOrgStructureRepository.findAll();
+	}
+	
+	@GetMapping("ent/{essubcoid}")
+	public ResponseEntity<List<EnterpriseOrgStructure>> GetEnterpriseByEsSubcoId(@PathVariable(value = "essubcoid") String esSubcoId){
+		
+		EnterpriseOrgStructure enterprise = new EnterpriseOrgStructure();
+		
+		enterprise.setESSubcoID(esSubcoId);
+		
+		Example<EnterpriseOrgStructure> enterpriseExample = Example.of(enterprise);
+		
+		List<EnterpriseOrgStructure> enterpriseReturn = enterpriseOrgStructureRepository.findAll(enterpriseExample);
+		
+		return ResponseEntity.ok().body(enterpriseReturn);
 	}
 
 	@PostMapping(value = "/entSave")

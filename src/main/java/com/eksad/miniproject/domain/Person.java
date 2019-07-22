@@ -33,7 +33,5 @@ public class Person {
 	@Enumerated(EnumType.STRING)
 	private Position position;
 	
-	@Embedded
-	private CreationSpecification creationSpecification;
 	
 }
